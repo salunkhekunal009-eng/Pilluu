@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Darling❤️🧿</title>
+
+<style>
+body{
+  margin:0;
+  background:black;
+  color:white;
+  font-family:Arial;
+  text-align:center;
+  overflow:hidden;
+}
+
+/* PASSWORD */
+#lock{
+  position:fixed;
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  background:black;
+  z-index:999;
+}
+
+input{
+  padding:12px;
+  font-size:18px;
+  border-radius:10px;
+  border:none;
+  text-align:center;
+}
+
+button{
+  padding:12px 22px;
+  margin-top:10px;
+  background:#ff0066;
+  border:none;
+  color:white;
+  border-radius:25px;
+  cursor:pointer;
+  font-size:16px;
+}
+
+/* MAIN */
+#screen{
+  display:none;
+  animation:fade 2s ease;
+}
+
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+#bg{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:url("photo1.jpg") center/cover no-repeat;
+  filter:blur(18px);
+  transform:scale(1.2);
+  z-index:-1;
+  transition:1s;
+}
+
+h1{
+  color:#ff66cc;
+  text-shadow:0 0 10px #ff66cc;
+}
+
+#msg{
+  padding:20px;
+  font-size:15px;
+  line-height:1.7;
+  white-space:pre-line;
+  min-height:120px;
+  text-shadow:0 0 5px pink;
+}
+
+img{
+  width:260px;
+  border-radius:15px;
+  transition:1s;
+}
+
+img:hover{
+  transform:scale(1.05);
+}
+
+/* HEART */
+.heart{
+  position:absolute;
+  color:pink;
+  font-size:22px;
+  animation:float 5s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh) scale(0.5);opacity:0;}
+50%{opacity:1;}
+100%{transform:translateY(-10vh) scale(1.2);opacity:0;}
+}
+
+/* FINAL PROPOSAL */
+#proposal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.95);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:9999;
+}
+
+#proposal h2{
+  color:#ff66cc;
+  font-size:32px;
+  padding:20px;
+}
+
+#yesBtn{
+  background:#ff0066;
+  padding:14px 30px;
+  border:none;
+  border-radius:30px;
+  color:white;
+  font-size:20px;
+}
+
+#forever{
+  display:none;
+  color:#ff66cc;
+  font-size:38px;
+  margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="lock">
+<h2>Enter Password 💖</h2>
+<input type="password" id="pass" placeholder="Password">
+<button onclick="checkPass()">Enter</button>
+</div>
+
+<div id="bg"></div>
+
+<div id="screen">
+<h1>HAPPY BIRTHDAY PILLU💋🧿</h1>
+<p id="msg"></p>
+<img id="img" src="photo1.jpg">
+</div>
+
+<div id="proposal">
+<h2>Will You Stay Forever With Me? ❤️</h2>
+<button id="yesBtn" onclick="yesLove()">Yes</button>
+<div id="forever">Forever Only You & Me ❤️🧿👸🏻</div>
+</div>
+
+<audio id="music" loop>
+<source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let photos=["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg","photo5.jpg","photo6.jpg","photo7.jpg"];
+let i=0,j=0;
+
+let text=`Happy Birthday, my love ❤️
+On this special day, I just want to remind you how incredibly important you are to me. You are not just my girlfriend, you are my happiness, my peace, and the most beautiful part of my life.
+
+On your birthday, I wish you endless happiness, success in everything you dream of, and a life filled with love and positivity. I promise to always stand by you, support you, and make you feel loved every single day.
+
+Once again, happy birthday to the most special person in my life—I love you more than words can ever express 💖✨
+
+Ever since you came into my world, everything feels brighter and more meaningful. Your smile has the power to fix my worst days, and your presence makes even the simplest moments feel unforgettable.
+
+I truly feel lucky to have someone like you who understands me, supports me, and stands by me no matter what. You have such a pure heart, such a kind soul, and such a wonderful way of making everyone around you feel special💞
+
+Mujhe To Bass Tu Hi Chahiye
+Na Tere Jaisa Chahiye, Na Tujhse Behtar Chahiye
+
+Tujhse Mohhbat Karna Galat Hai To Mujhe Iski Saja Chahiye
+Lekin Us Saja Ke Bad Mujhe Bas Tu Chahiye
+
+Manjur Hai Mujhe Logo Ki Kahi Bhali Buri Baatein Sunna
+Lekin In Sab Baton Ke Bad Bhi Mujhe Bas Tu Chahiye
+
+Ha Har Pal Har Lamha Bas Tu Chahiye Tu 💞🧿🫶`;
+
+function checkPass(){
+if(document.getElementById("pass").value==="Pilluu"){
+
+document.getElementById("lock").style.display="none";
+document.getElementById("screen").style.display="block";
+
+typeText();
+slideShow();
+hearts();
+
+let audio=document.getElementById("music");
+audio.currentTime=0;
+audio.play();
+
+setTimeout(()=>{
+document.getElementById("proposal").style.display="flex";
+},42000);
+
+}else{
+alert("Wrong Password ❌");
+}
+}
+
+function typeText(){
+if(j<text.length){
+document.getElementById("msg").innerHTML+=text.charAt(j);
+j++;
+setTimeout(typeText,35);
+}
+}
+
+function slideShow(){
+setInterval(()=>{
+document.getElementById("img").src=photos[i];
+document.getElementById("bg").style.backgroundImage="url('"+photos[i]+"')";
+i=(i+1)%photos.length;
+},3000);
+}
+
+function hearts(){
+setInterval(()=>{
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),5000);
+},250);
+}
+
+function yesLove(){
+document.getElementById("forever").style.display="block";
+
+for(let k=0;k<70;k++){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="💖";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),5000);
+}
+}
+</script>
+
+</body>
+</html>
